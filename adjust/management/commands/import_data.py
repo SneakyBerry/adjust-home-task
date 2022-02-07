@@ -1,6 +1,7 @@
 import csv
 
 from django.core.management import BaseCommand
+from django.db import transaction
 
 from adjust.serializers import AdjustSerializer
 
@@ -11,6 +12,7 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument("csv", type=str)
 
+    @transaction.atomic()
     def handle(self, *args, **options):
         csv_path = options["csv"]
         with open(csv_path) as import_data:
