@@ -1,6 +1,8 @@
 # adjust-home-task
 ### Usage:
 ```bash
+pip install poetry
+poetry install
 python manage.py migrate
 python manage.py import_data dataset.csv
 python manage.py runserver
